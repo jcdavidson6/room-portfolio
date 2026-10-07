@@ -1,0 +1,343 @@
+:root {
+	--plum: #2b2638;
+	--plum-soft: #453d59;
+	--lavender: #877d96;
+	--lavender-tint: #e4ddec;
+	--cream: #f5f0e8;
+	--cream-deep: #e9e1d3;
+	--ink: #211d2b;
+}
+
+html, body { margin: 0; height: 100%; overflow: hidden; }
+body { font-family: Arial, sans-serif; color: #211d2b; }
+canvas { position: fixed; top: 0; left: 0; display: block; touch-action: none; }
+
+.loading-screen {
+	position: fixed;
+	box-sizing: border-box;
+	width: 108vw;
+	height: 108vh;
+	top: 50%;
+	left: 50%;
+	margin-left: -54vw;
+	margin-top: -54vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 999999;
+	overflow: hidden;
+	background: #2b2638;
+	border: 8px solid #877d96;
+	border-radius: 48px;
+	transform: perspective(1000px);
+}
+
+.loading-screen-button {
+	padding: 10px 40px;
+	border: 0;
+	border-radius: 1.2rem;
+	outline: 0;
+	background: transparent;
+	color: #f5f0e8;
+	font-family: "Chewy", Arial, sans-serif;
+	font-size: 42px;
+	font-weight: 400;
+	letter-spacing: 0.02em;
+}
+
+.instructions {
+	position: absolute;
+	bottom: 10%;
+	width: 90%;
+	max-width: 1200px;
+	margin: 0;
+	text-align: center;
+	font-family: "Patrick Hand", Arial, sans-serif;
+	font-size: 28px;
+	color: #f5f0e8;
+}
+
+.browser-note {
+	bottom: 4%;
+	font-size: 22px;
+}
+
+.mobile-instructions { display: none; }
+
+@media (max-width: 768px) {
+	.loading-screen-button { font-size: 32px; }
+	.instructions { font-size: 24px; }
+	.desktop-instructions { display: none; }
+	.mobile-instructions { display: block; }
+}
+
+/* Pop-ups: blurred room behind a thick-bordered card with a pill title and a tilted close button. */
+.overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 2;
+	background: rgba(43, 38, 56, 0.35);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	opacity: 0;
+	pointer-events: none;
+	transition: opacity 0.25s ease;
+}
+
+.overlay.is-visible {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.modal {
+	position: fixed;
+	inset: 0;
+	z-index: 3;
+	display: flex;
+	flex-direction: column;
+	width: min(760px, calc(100% - 64px));
+	height: fit-content;
+	max-height: min(84vh, 760px);
+	margin: auto;
+	padding: 28px 32px 30px;
+	box-sizing: border-box;
+	border: 10px solid var(--lavender);
+	border-radius: 34px;
+	background: var(--cream);
+	color: var(--ink);
+	font-family: "Poppins", Arial, sans-serif;
+	font-size: 1rem;
+	line-height: 1.55;
+	box-shadow: 0 22px 60px rgba(33, 29, 43, 0.35);
+}
+
+.modal[hidden] { display: none; }
+.modal:focus { outline: none; }
+
+#contact-modal { width: min(520px, calc(100% - 64px)); }
+
+.modal-title {
+	flex: none;
+	align-self: center;
+	width: min(100%, 470px);
+	margin: 0 0 22px;
+	padding: 6px 24px 8px;
+	box-sizing: border-box;
+	border-radius: 999px;
+	background: var(--lavender-tint);
+	color: var(--plum);
+	font-family: "Poppins", Arial, sans-serif;
+	font-size: 1.8rem;
+	font-weight: 600;
+	line-height: 1.25;
+	text-align: center;
+}
+
+.modal-close {
+	position: absolute;
+	top: -30px;
+	right: -30px;
+	display: grid;
+	place-items: center;
+	width: 68px;
+	height: 68px;
+	padding: 0;
+	border: 8px solid var(--lavender);
+	border-radius: 20px;
+	background: var(--cream);
+	color: var(--lavender);
+	cursor: pointer;
+	transform: rotate(12deg);
+	transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+}
+
+.modal-close .icon { width: 34px; height: 34px; stroke-width: 3.5; }
+
+.modal-close:hover {
+	color: var(--plum);
+	transform: rotate(0deg) scale(1.08);
+}
+
+.modal-body {
+	min-height: 0;
+	margin-right: -16px;
+	padding-right: 16px;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	scrollbar-width: thin;
+	scrollbar-color: var(--lavender) var(--cream-deep);
+}
+
+.modal-body::-webkit-scrollbar { width: 10px; }
+.modal-body::-webkit-scrollbar-track { border-radius: 999px; background: var(--cream-deep); }
+.modal-body::-webkit-scrollbar-thumb { border-radius: 999px; background: var(--lavender); }
+
+.modal p { margin: 0 0 0.85em; }
+.modal p:last-child { margin-bottom: 0; }
+
+.modal a { color: var(--plum); }
+
+.modal a:focus-visible,
+.modal-close:focus-visible {
+	outline: 3px solid var(--plum);
+	outline-offset: 3px;
+}
+
+.icon {
+	flex: none;
+	width: 22px;
+	height: 22px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+/* Projects: thumbnail on the left, details on the right. */
+.project {
+	display: grid;
+	grid-template-columns: 190px minmax(0, 1fr);
+	gap: 24px;
+	align-items: start;
+}
+
+.project + .project { margin-top: 30px; }
+
+.project-thumb {
+	display: grid;
+	place-items: center;
+	aspect-ratio: 5 / 3;
+	border: 5px solid #cfc6da;
+	border-radius: 18px;
+	background: var(--lavender-tint);
+	color: var(--plum-soft);
+	overflow: hidden;
+}
+
+.project-thumb svg {
+	width: 78%;
+	fill: var(--cream);
+	stroke: currentColor;
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+/* To use a screenshot instead of the drawing, put an <img> inside .project-thumb. */
+.project-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.project h3 {
+	margin: 0 0 4px;
+	color: var(--plum);
+	font-family: "Poppins", Arial, sans-serif;
+	font-size: 1.35rem;
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+.project p { margin-bottom: 0.7em; }
+
+.skill-tags,
+.project-links,
+.contact-links {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.skill-tags { gap: 6px; margin-bottom: 12px; }
+
+.skill-tags li {
+	padding: 3px 12px;
+	border-radius: 999px;
+	background: var(--cream-deep);
+	font-size: 0.82rem;
+}
+
+.project-links { gap: 8px; }
+
+.project-links a {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 4px 14px 4px 10px;
+	border: 3px solid var(--lavender);
+	border-radius: 999px;
+	font-size: 0.88rem;
+	font-weight: 500;
+	text-decoration: none;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.project-links a:hover,
+.project-links a:focus-visible {
+	background: var(--lavender);
+	color: var(--cream);
+}
+
+/* Contact: a short note above a row of large icon links. */
+.contact-lead {
+	color: var(--plum);
+	font-family: "Poppins", Arial, sans-serif;
+	font-size: 1.35rem;
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+.modal .contact-lead { margin-bottom: 0.3em; }
+
+.contact-links {
+	justify-content: space-around;
+	gap: 12px;
+	margin-top: 22px;
+}
+
+.contact-links a {
+	display: grid;
+	justify-items: center;
+	gap: 4px;
+	padding: 6px 10px;
+	border-radius: 16px;
+	color: var(--lavender);
+	text-decoration: none;
+	transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.2s ease;
+}
+
+.contact-links .icon { width: 58px; height: 58px; }
+.contact-links span { color: var(--plum); font-size: 0.9rem; font-weight: 500; }
+
+.contact-links a:hover,
+.contact-links a:focus-visible {
+	color: var(--plum);
+	transform: translateY(-4px) scale(1.06);
+}
+
+@media (max-width: 640px) {
+	.modal {
+		width: calc(100% - 36px);
+		max-height: 82vh;
+		padding: 24px 20px 24px;
+		border-width: 8px;
+		border-radius: 28px;
+		font-size: 0.95rem;
+	}
+	#contact-modal { width: calc(100% - 36px); }
+	.modal-title { font-size: 1.5rem; margin-bottom: 16px; }
+	.modal-close { top: -26px; right: -8px; width: 56px; height: 56px; border-width: 7px; border-radius: 17px; }
+	.modal-close .icon { width: 28px; height: 28px; }
+	.modal-body { margin-right: -12px; padding-right: 12px; }
+	.project { grid-template-columns: 1fr; gap: 12px; }
+	.project-thumb { aspect-ratio: 5 / 2; }
+	.project-thumb svg { width: 44%; }
+	.contact-links .icon { width: 50px; height: 50px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.modal-close,
+	.contact-links a,
+	.project-links a,
+	.overlay { transition: none; }
+}

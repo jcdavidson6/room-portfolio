@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>room-portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Patrick+Hand&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="loading-screen">
+      <button class="loading-screen-button" type="button">Loading...</button>
+      <p class="instructions desktop-instructions">drag to look around and scroll to zoom!</p>
+      <p class="instructions desktop-instructions browser-note">built for desktop and laptop browsers</p>
+      <p class="instructions mobile-instructions">use one or two fingers to look around!</p>
+    </div>
+
+    <div id="app"></div>
+
+    <div class="overlay" aria-hidden="true"></div>
+
+    <section class="modal" id="about-modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="about-title" hidden>
+      <button class="modal-close" type="button" aria-label="Close About Me"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg></button>
+      <h2 class="modal-title" id="about-title">About Me</h2>
+      <div class="modal-body">
+        <p>Hi, my name is James! I'm a recent graduate from Texas A&amp;M University, where I obtained a BBA in Management Information Systems. I grew up in the Dallas area and have always been drawn toward intersecting business and technology.</p>
+        <p>Being bilingual in both English and Tamil, translating concepts between different audiences has always been a skill and a passion of mine, whether that's defining a product roadmap between different stakeholders or explaining how the internet works to my grandfather.</p>
+        <p>I am passionate about intersecting technology, problem solving, and humans to build products for meaningful communities and exploring how global innovation and entrepreneurship can create a more equitable world.</p>
+        <p>In my free time, I enjoy concerts, badminton, traveling, and trying new restaurants (add me on beli @jcdavidson)!</p>
+      </div>
+    </section>
+
+    <section class="modal" id="projects-modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="projects-title" hidden>
+      <button class="modal-close" type="button" aria-label="Close Projects"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg></button>
+      <h2 class="modal-title" id="projects-title">Projects</h2>
+      <div class="modal-body">
+        <article class="project">
+          <div class="project-thumb" aria-hidden="true"><svg viewBox="0 0 120 80"><path d="M30 22l26 18-26 18z" /><path d="M64 22v36" /><path d="M78 30h14M78 40h9M78 50h12" /></svg></div>
+          <div class="project-info">
+            <h3>Skip Insights</h3>
+            <p>A Chrome extension that shows which Spotify tracks and artists you keep skipping.</p>
+            <ul class="skill-tags" aria-label="Skip Insights skills">
+              <li>Chrome Extension Development</li>
+              <li>JavaScript</li>
+              <li>Data Visualization</li>
+              <li>UI Design</li>
+              <li>Product Design</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://jamesdportfolio.wixstudio.com/skip-insights" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18" /></svg>Landing page</a>
+              <a href="https://github.com/jcdavidson6/SkipInsights" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 6l-3 12" /></svg>GitHub</a>
+              <a href="https://docs.google.com/document/d/1zxl0S9Qk5XPo_ySl5CTQR8RiUDZHtcvbGapY-j6W86o/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z" /><path d="M14 3v4h4M10 12h5M10 16h5" /></svg>PRD</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-thumb" aria-hidden="true"><svg viewBox="0 0 120 80"><rect x="33" y="15" width="34" height="46" rx="6" transform="rotate(-12 50 38)" /><rect x="55" y="12" width="34" height="46" rx="6" transform="rotate(9 72 35)" /><path d="M67 27v16l13-6z" transform="rotate(9 72 35)" /></svg></div>
+          <div class="project-info">
+            <h3>Flix</h3>
+            <p>A movie discovery platform that uses swipe-based preferences to personalize recommendations and help friends find movies they both enjoy.</p>
+            <ul class="skill-tags" aria-label="Flix skills">
+              <li>Product Design</li>
+              <li>UX Design</li>
+              <li>Figma</li>
+              <li>Website Design</li>
+              <li>User Research</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://jamesdportfolio.wixstudio.com/flix" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18" /></svg>Landing page</a>
+              <a href="https://jcdavidson6.github.io/Flix/" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M10 8.5v7l6-3.5z" /></svg>Live prototype</a>
+              <a href="https://docs.google.com/document/d/1Wl2bke-R2YE_bRvblpyBNkqdcioBu7LAI7YtoBL4eQo/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z" /><path d="M14 3v4h4M10 12h5M10 16h5" /></svg>PRD</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-thumb" aria-hidden="true"><svg viewBox="0 0 120 80"><rect x="24" y="14" width="72" height="48" rx="7" /><path d="M24 27h72" /><circle cx="33" cy="20.5" r="1.6" /><circle cx="40" cy="20.5" r="1.6" /><circle cx="47" cy="20.5" r="1.6" /><path d="M34 38h24M34 46h18M34 54h22" /><rect x="68" y="36" width="19" height="18" rx="3" /></svg></div>
+          <div class="project-info">
+            <h3>Jasper Green Website</h3>
+            <p>A collaborative Texas A&amp;M MIS capstone project for Jasper Green, where I helped design and develop an interactive website using HTML, CSS, C#, and SQL.</p>
+            <ul class="skill-tags" aria-label="Jasper Green skills">
+              <li>HTML/CSS</li>
+              <li>C#</li>
+              <li>SQL</li>
+              <li>Web Development</li>
+            </ul>
+            <div class="project-links">
+              <a href="https://github.com/jcdavidson6/JasperGreen" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 6l-3 12" /></svg>GitHub</a>
+              <a href="https://docs.google.com/document/d/1cQCFOKs1LBAJ_EgeF9P1XO_iMPgL8_S8BCTpNT5ePVw/edit?usp=sharing" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z" /><path d="M14 3v4h4M10 12h5M10 16h5" /></svg>Analysis</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <div class="project-thumb" aria-hidden="true"><svg viewBox="0 0 120 80"><path d="M60 9l36 16v30L60 71 24 55V25z" /><path d="M60 41L24 25M60 41l36-16M60 41v30" /><path d="M72 52v-9l12-5v9z" /><path d="M36 42l9 4v9l-9-4z" /></svg></div>
+          <div class="project-info">
+            <h3>Room Portfolio</h3>
+            <p>An interactive 3D portfolio you can spin, zoom, and explore, built with Three.js and Blender.</p>
+            <ul class="skill-tags" aria-label="Room Portfolio skills">
+              <li>UI Design</li>
+              <li>3D Art</li>
+              <li>Programming</li>
+              <li>Motion Design</li>
+              <li>Animation</li>
+              <li>HTML/CSS</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="modal" id="contact-modal" role="dialog" aria-modal="true" tabindex="-1" aria-labelledby="contact-title" hidden>
+      <button class="modal-close" type="button" aria-label="Close Contact"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg></button>
+      <h2 class="modal-title" id="contact-title">Contact</h2>
+      <div class="modal-body">
+        <p class="contact-lead">Let's connect!</p>
+        <p>Feel free to reach me at <a href="mailto:jamesclementdavidson@gmail.com">jamesclementdavidson@gmail.com</a></p>
+        <ul class="contact-links">
+          <li><a href="mailto:jamesclementdavidson@gmail.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" /><path d="M4 7.5l8 6 8-6" /></svg><span>Email</span></a></li>
+          <li><a href="https://github.com/jcdavidson6" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 6l-3 12" /></svg><span>GitHub</span></a></li>
+          <li><a href="https://www.linkedin.com/in/jamesdavidsonx" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2.5" /><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" /></svg><span>LinkedIn</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="experience">
+      <canvas class="experience-canvas"></canvas>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
