@@ -2,7 +2,7 @@
 
 An interactive 3D portfolio experience built with Three.js and Blender. Explore the virtual room to learn more about my background, projects, and ways to connect.
 
-Inspired by Andrew Woan ([https://youtu.beAB6sulUMRGE](https://youtu.beab6sulumrge/))
+Inspired by Andrew Woan ([https://youtu.be/AB6sulUMRGE?si=uIBgZW6Ak4USVODm])
 
 ## Credits
 
